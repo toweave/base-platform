@@ -1,0 +1,27 @@
+@import './index.scss';
+/*------common start------*/
+.link-color {
+  color: $main;
+}
+
+.link-color:hover,
+.link-color:focus {
+  color: $mainDeep;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mouse-pointer {
+  cursor: pointer;
+}
+/*------common end------*/
