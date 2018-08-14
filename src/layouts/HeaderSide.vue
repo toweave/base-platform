@@ -3,7 +3,8 @@
     <el-header class="container-header" height="60px">
       <el-row>
         <el-col :span="6" style="text-align: left">
-          <img src="/static/logo.png" style="height: 40px;margin-top: 10px" />
+          <img src="../../static/logo.png" style="height: 40px;margin-top: 10px" />
+          <div style="display: inline-block" @click="handlerToggleAsideMenu">Toggle</div>
         </el-col>
         <el-col :span="18">
           <el-menu style="float: right"
@@ -39,8 +40,10 @@
       </el-row>
     </el-header>
     <el-container>
-      <el-aside class="container-side" width="200px">
+      <el-aside class="container-side" id="asideMenuBox" style="width: 200px">
         <el-menu
+          :collapse="isCollapseAsideMenu"
+          :collapse-transition="false"
           default-active="2"
           class="el-menu-vertical-demo"
           @open="handleOpen"
@@ -48,7 +51,7 @@
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">
-          <el-submenu index="1" style="width: 200px;">
+          <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>导航一</span>
@@ -66,11 +69,11 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="2" style="width: 200px;">
+          <el-menu-item index="2">
             <i class="el-icon-menu"></i>
             <span slot="title">导航二</span>
           </el-menu-item>
-          <el-menu-item index="3" style="width: 200px;">
+          <el-menu-item index="3">
             <i class="el-icon-setting"></i>
             <span slot="title">导航三</span>
           </el-menu-item>
@@ -85,22 +88,29 @@
 </template>
 
 <script>
-import ElRow from 'element-ui/packages/row/src/row'
-import ElCol from 'element-ui/packages/col/src/col'
+import VelocityAnimate from 'velocity-animate'
 
 export default {
   name: 'HeaderSide',
-  components: {
-    ElCol,
-    ElRow},
+  components: {},
   computed: {},
   data () {
     return {
+      isCollapseAsideMenu: false,
       bodyHeight: '',
       activeIndex2: ''
     }
   },
   methods: {
+    handlerToggleAsideMenu () {
+      this.isCollapseAsideMenu = !this.isCollapseAsideMenu
+      let asideMenuBox = document.querySelector('#asideMenuBox')
+      if (this.isCollapseAsideMenu) {
+        VelocityAnimate(asideMenuBox, { width: '64px' }, { duration: 500 })
+      } else {
+        VelocityAnimate(asideMenuBox, { width: '200px' }, { duration: 500 })
+      }
+    },
     setBodyHeight () {
       let height = document.documentElement.clientHeight || document.body.clientHeight
       this.bodyHeight = height - (60 + 40) + 'px'
@@ -137,8 +147,15 @@ export default {
   }
 
   .container-side {
+    width: 200px;
     border-top: 1px solid $white;
     background-color: #545c64;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .el-menu {
+      border-right: none;
+    }
   }
 
   .container-footer {
