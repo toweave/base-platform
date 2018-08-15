@@ -18,23 +18,19 @@ export default {
     })
 
     // 2. 添加实例方法
-    Vue.prototype.$formattingNumber = function (number, decimal, boolean) {
-      if (isNaN(number) || number === null) {
-        return '--'
+    Vue.prototype.$scrollToMainTop = function (value = 0) {
+      if (isNaN(value)) {
+        throw console.error('TypeError: Parameter type must be number. Parameter value : %s', value)
       } else {
-        if (isNaN(decimal)) {
-          decimal = 0
-        }
-        let newNumber = Number(number)
-        if (newNumber === 0) {
-          return '--'
-        } else {
-          if (boolean !== true && boolean !== undefined) {
-            return newNumber.toFixed(decimal)
-          } else {
-            return (newNumber.toFixed(decimal)).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+        const scrollToTop = () => {
+          let main = document.querySelector('#mainBody')
+          const scrollPosition = main.scrollTop
+          if (scrollPosition > value) {
+            main.scrollTo(value, scrollPosition - scrollPosition / 8)
+            window.requestAnimationFrame(scrollToTop)
           }
         }
+        scrollToTop()
       }
     }
 

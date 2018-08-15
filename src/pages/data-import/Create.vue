@@ -11,6 +11,7 @@
     </el-select>
     <p style="padding:20px;height: 300px; background-color: #f1f1f1;" v-for="item in 20" :key="item">test P {{item}}</p>
     <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+    <el-button type="text" @click="$scrollToMainTop()">GO TO TOP</el-button>
 
     <el-dialog
       title="提示"
