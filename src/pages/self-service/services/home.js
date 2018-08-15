@@ -1,4 +1,4 @@
-import {request, requestNoLoading} from '../../../utils/request'
+import {request, requestNoLoading} from '@/utils/request'
 const option = {
   method: 'GET',
   // params: {

@@ -5,8 +5,6 @@ import 'nprogress/nprogress.css'// progress bar style
 import ModuleErrors from './errors'
 import DataImport from './data-import'
 import SelfService from './self-service'
-console.log(8, DataImport)
-console.log(9, SelfService)
 
 const HeaderSide = () => import(/* webpackChunkName: "group-side" */ '@/layouts/HeaderSide')
 

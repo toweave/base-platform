@@ -1,12 +1,35 @@
 <template>
   <div class="index">
     <h1>{{ msg }}</h1>
+    <el-select v-model="value" placeholder="请选择" ref="selectTest">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
+    <p style="padding:20px;height: 300px; background-color: #f1f1f1;" v-for="item in 20" :key="item">test P {{item}}</p>
+    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import mixin from '@/mixins'
 import * as apiService from './services/home'
-import mixin from '../../mixins'
+console.log(31, apiService)
 export default {
   name: 'DataImportCreate',
   mixins: [mixin],
@@ -14,97 +37,39 @@ export default {
   data () {
     return {
       msg: 'Welcome to DataImportCreate',
-      booleanLoading: false,
-      testData: '123456789',
-      formatTime: 'yyyy-MM-dd HH:mm:ss.Z',
-      formatNumber: 3,
-      testTime: 0,
-      tableData4: [{
-        date: '2016-05-03',
-        name: '王小虎',
-        province: '上海',
-        city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
-        zip: 200333
+      options: [{
+        value: '选项1',
+        label: '黄金糕'
+      }, {
+        value: '选项2',
+        label: '双皮奶'
+      }, {
+        value: '选项3',
+        label: '蚵仔煎'
+      }, {
+        value: '选项4',
+        label: '龙须面'
+      }, {
+        value: '选项5',
+        label: '北京烤鸭'
       }],
-      tableData: [],
-      navigationData: []
+      value: '',
+      dialogVisible: false
     }
   },
   methods: {
-    handlerLocalStorage () {
-      this.navigationData[this.navigationData.length] = {
-        index: this.navigationData.length,
-        title: '测试' + this.navigationData.length,
-        url: 'http://www.baidu.com/'
-      }
-      this.$setLocalStorage('LocalNavigation', this.navigationData)
+    onScroll () {
+      this.$refs.selectTest.blur()
     },
-    watchData () {
-      console.log(34)
-    },
-    testFocus () {
-      console.log('1234789')
-    },
-    testAlert () {
-      this.$store.commit({
-        type: 'ACTIVE_ALERT',
-        alert: {
-          show: true,
-          title: '提示',
-          content: '消息已读！',
-          buttonLeft: '确定',
-          buttonRight: '取消',
-          functionLeft: () => {
-            console.log('你点击了确定')
-          },
-          functionRight: () => {
-            console.log('你点击了取消')
-          }
-        }
-      })
-    },
-    getDataLoading () {
-      let params = {
-        page: 1,
-        limit: 4
-      }
-      let test = apiService.fetch(params)
-      test.then((res) => {
-        // this.booleanLoading = false
-        console.log(24, res)
-        this.tableData = res || []
-      })
-    },
-    getDataNoLoading () {
-      let params = {
-        page: 2,
-        limit: 5
-      }
-      this.booleanLoading = true
-      let test = apiService.fetchNoLoading(params)
-      setInterval(() => {
-        test.then((res) => {
-          this.booleanLoading = false
-          // this.booleanLoading = false
-          console.log(24, res)
-          this.tableData = res || []
+    handleClose (done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done()
         })
-      }, 500)
+        .catch(_ => {})
     }
   },
   created () {
-    console.log(69, this)
-    // this.testMethods()
-    // let number = 0
-    let LocalNavigation = this.$getLocalStorage('LocalNavigation')
-    console.log(291, LocalNavigation)
-    if (LocalNavigation) {
-      this.navigationData = LocalNavigation
-    }
-    setInterval(() => {
-      this.testTime = new Date()
-    }, 1000)
   },
   mounted () {
   }

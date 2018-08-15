@@ -6,8 +6,9 @@
 </template>
 
 <script>
+import mixin from '@/mixins'
 import * as apiService from './services/home'
-import mixin from '../../mixins'
+console.log(31, apiService)
 export default {
   name: 'DataImportIndex',
   mixins: [mixin],

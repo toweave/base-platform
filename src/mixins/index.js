@@ -15,6 +15,9 @@ const mixin = {
   },
   created: function () {
     console.log('混入对象的钩子被调用')
+    this.$nextTick(() => {
+      document.getElementById('mainBody').addEventListener('scroll', this.onScroll)
+    })
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="container">
     <el-header class="container-header" height="60px">
       <el-row>
         <el-col :span="6" style="text-align: left">
@@ -80,7 +80,7 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-main class="container-body" :style="{'height': bodyHeight}">
+        <el-main class="container-body" :style="{'height': bodyHeight}" id="mainBody">
           <router-view/>
         </el-main>
         <el-footer class="container-footer" style="font-size: 14px;color: #999" height="40px">产品 version v1.0.0</el-footer>
@@ -140,6 +140,7 @@ export default {
 <style type="text/scss" rel="stylesheet/scss" lang="scss" scoped>
   @import '../styles/index.scss';
   .container {
+    min-width: 1200px;
   }
 
   .container-header {

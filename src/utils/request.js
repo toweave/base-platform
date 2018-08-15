@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../store'
+import store from '@/store'
 // axios.defaults.crossDomain = true
 // axios.defaults.withCredentials = true
 // store.dispatch('getUserName', {
@@ -18,6 +18,7 @@ switch (debugCase) {
     baseUrl = 'https://jsonplaceholder.typicode.com'
     break
 }
+console.log('store::', store)
 const baseAxios = axios.create({
   baseURL: baseUrl,
   timeout: 6000 // 60s 超时
