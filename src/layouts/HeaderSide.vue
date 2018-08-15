@@ -41,7 +41,7 @@
     </el-header>
     <el-container>
       <el-aside class="container-side" id="asideMenuBox" style="width: 200px">
-        <el-menu
+        <el-menu :router="true"
           :collapse="isCollapseAsideMenu"
           :collapse-transition="false"
           default-active="2"
@@ -69,13 +69,13 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="2">
+          <el-menu-item index="2" :route="{'path': '/data-import'}">
             <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
+            <span slot="title">数据导入</span>
           </el-menu-item>
-          <el-menu-item index="3">
+          <el-menu-item index="3" :route="{'path': '/self-service'}">
             <i class="el-icon-setting"></i>
-            <span slot="title">导航三</span>
+            <span slot="title">自助取数</span>
           </el-menu-item>
         </el-menu>
       </el-aside>

@@ -20,6 +20,7 @@ const router = new Router({
       path: '/',
       name: 'HeaderSide',
       component: HeaderSide,
+      alias: '',
       children: [
         DataImport,
         SelfService

@@ -11,7 +11,6 @@ const SelfService = {
   path: '/self-service',
   name: 'SelfServiceIndex',
   component: SelfServiceIndex,
-  alias: '',
   children: [
     {
       path: '/create',
