@@ -2,13 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
+import ModuleErrors from './errors'
+import DataImport from './data-import'
+import SelfService from './self-service'
+console.log(8, DataImport)
+console.log(9, SelfService)
 
-const Main = () => import(/* webpackChunkName: "group-main" */ '@/layouts/Main')
-const MainHomeIndex = () => import(/* webpackChunkName: "group-main" */ '@/pages/home/Index')
-const Side = () => import(/* webpackChunkName: "group-side" */ '@/layouts/Side')
-const SideListIndex = () => import(/* webpackChunkName: "group-side" */ '@/pages/list/Index')
 const HeaderSide = () => import(/* webpackChunkName: "group-side" */ '@/layouts/HeaderSide')
 
+console.log(13, ModuleErrors)
 Vue.use(Router)
 
 const router = new Router({
@@ -17,37 +19,16 @@ const router = new Router({
   base: __dirname,
   routes: [
     {
-      path: '/main',
-      name: 'Main',
-      component: Main,
-      alias: '',
-      children: [
-        {
-          path: 'home',
-          name: 'MainHomeIndex',
-          component: MainHomeIndex,
-          alias: ''
-        }
-      ]
-    },
-    {
-      path: '/side',
-      name: 'Side',
-      component: Side,
-      children: [
-        {
-          path: 'home',
-          name: 'SideListIndex',
-          component: SideListIndex,
-          alias: ''
-        }
-      ]
-    },
-    {
-      path: '/header-side',
+      path: '/',
       name: 'HeaderSide',
-      component: HeaderSide
-    }
+      component: HeaderSide,
+      children: [
+        DataImport,
+        SelfService
+      ]
+    },
+    ModuleErrors.errorLayout,
+    ModuleErrors.errorMatching
   ]
 })
 

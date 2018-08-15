@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <h1>{{ msg }}</h1>
+    <h1>404 {{ msg }}</h1>
   </div>
 </template>
 

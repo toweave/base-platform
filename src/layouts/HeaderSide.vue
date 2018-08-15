@@ -80,7 +80,9 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-main class="container-body" :style="{'height': bodyHeight}">Main</el-main>
+        <el-main class="container-body" :style="{'height': bodyHeight}">
+          <router-view/>
+        </el-main>
         <el-footer class="container-footer" style="font-size: 14px;color: #999" height="40px">产品 version v1.0.0</el-footer>
       </el-container>
     </el-container>
