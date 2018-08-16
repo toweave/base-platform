@@ -8,7 +8,7 @@ import SelfService from './self-service'
 
 const HeaderSide = () => import(/* webpackChunkName: "group-side" */ '@/layouts/HeaderSide')
 
-console.log(13, ModuleErrors)
+console.log(13, DataImport, SelfService)
 Vue.use(Router)
 
 const router = new Router({
@@ -33,7 +33,7 @@ const router = new Router({
 
 // 全局前置导航守卫
 router.beforeEach((to, from, next) => {
-  // console.log(to, from)
+  console.log(to, from)
   NProgress.start() // finish progress bar
   next()
 })
