@@ -8,6 +8,9 @@
         <path class="hamburger--path" d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
       </svg>
     </div>
+    <h3>
+      <span @click="openVNode">Test Alert</span>
+    </h3>
   </div>
 </template>
 
@@ -26,7 +29,18 @@ export default {
       booleanMenuAnimation: false
     }
   },
-  methods: {},
+  methods: {
+    openVNode () {
+      const h = this.$createElement
+      this.$message({
+        duration: 12000,
+        message: h('p', null, [
+          h('span', null, '内容可以是 '),
+          h('i', { style: 'color: teal' }, 'VNode')
+        ])
+      })
+    }
+  },
   created () {
   },
   mounted () {

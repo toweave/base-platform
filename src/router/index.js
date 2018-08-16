@@ -7,6 +7,7 @@ import DataImport from './data-import'
 import SelfService from './self-service'
 
 const HeaderSide = () => import(/* webpackChunkName: "group-side" */ '@/layouts/HeaderSide')
+const Login = () => import(/* webpackChunkName: "group-side" */ '@/layouts/Login')
 
 console.log(13, DataImport, SelfService)
 Vue.use(Router)
@@ -25,6 +26,11 @@ const router = new Router({
         DataImport,
         SelfService
       ]
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     ModuleErrors.errorLayout,
     ModuleErrors.errorMatching
