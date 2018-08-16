@@ -91,7 +91,7 @@
 
       </el-aside>
       <el-container>
-        <el-main class="container-body" :style="{'height': bodyHeight}" id="mainBody">
+        <el-main class="container-body" :style="{'height': bodyHeight}" id="main">
           <router-view/>
         </el-main>
         <el-footer class="container-footer" style="font-size: 14px;color: #999" height="40px">产品 version v1.0.0</el-footer>
@@ -112,6 +112,7 @@ export default {
       booleanMenuAnimation: false,
       isCollapseAsideMenu: false,
       bodyHeight: '',
+      viewHeight: '',
       activeIndex2: ''
     }
   },
@@ -125,9 +126,16 @@ export default {
         VelocityAnimate(asideMenuBox, { width: '200px' }, { duration: 500 })
       }
     },
-    setBodyHeight () {
-      let height = document.documentElement.clientHeight || document.body.clientHeight
-      this.bodyHeight = height - (60 + 40) + 'px'
+    resizeBodyHeight () {
+      let resizeMethod = () => {
+        window.requestAnimationFrame(() => {
+          let height = document.documentElement.clientHeight || document.body.clientHeight
+          this.bodyHeight = height - (60 + 40) + 'px'
+          this.viewHeight = height - (60 + 40 + 240) + 'px'
+        })
+      }
+      resizeMethod()
+      window.addEventListener('resize', resizeMethod, true)
     },
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
@@ -142,7 +150,7 @@ export default {
   created () {
   },
   mounted () {
-    this.setBodyHeight()
+    this.resizeBodyHeight()
   },
   watch: {}
 }

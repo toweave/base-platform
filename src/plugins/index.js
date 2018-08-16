@@ -23,7 +23,7 @@ export default {
         throw console.error('TypeError: Parameter type must be number. Parameter value : %s', value)
       } else {
         const scrollToTop = () => {
-          let main = document.querySelector('#mainBody')
+          let main = document.querySelector('#main')
           const scrollPosition = main.scrollTop
           if (scrollPosition > value) {
             main.scrollTo(value, scrollPosition - scrollPosition / 8)
