@@ -200,6 +200,7 @@ export default {
     height: 324px;
 
     .cell {
+      float: left;
       box-sizing: border-box;
       display: flex;
       justify-content: space-around;
