@@ -1,20 +1,21 @@
 <template>
   <el-main class="main" :style="{'height': bodyHeight}">
     <div class="login">
+      <div class="login--skew"></div>
       <div class="login--body">
         <el-row>
-          <el-col :span="14">
+          <el-col :span="12">
             <div class="login-banner">
-              <el-carousel trigger="click" height="150px">
-                <el-carousel-item v-for="item in 4" :key="item">
-                  <h3>{{ item }}</h3>
-                </el-carousel-item>
-              </el-carousel>
+              <transition-group name="cell" tag="div" class="container">
+                <div v-for="cell in cells" :key="cell.id" class="cell">
+                  {{ cell.number }}
+                </div>
+              </transition-group>
             </div>
           </el-col>
-          <el-col :span="10">
+          <el-col :span="12">
             <div class="login-form">
-              <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px">
+              <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="74px">
                 <el-form-item label="用户" required>
                   <el-input
                     placeholder="请输入内容"
@@ -43,8 +44,7 @@
 </template>
 
 <script>
-import VelocityAnimate from 'velocity-animate'
-
+// import VelocityAnimate from 'velocity-animate'
 export default {
   name: 'Login',
   components: {},
@@ -53,6 +53,13 @@ export default {
     return {
       bodyHeight: '',
       viewHeight: '',
+      cells: Array.apply(null, {length: 81})
+        .map(function (item, index) {
+          return {
+            id: index,
+            number: index % 9 + 1
+          }
+        }),
       ruleForm: {
         name: '',
         region: '',
@@ -100,24 +107,42 @@ export default {
       resizeMethod()
       window.addEventListener('resize', resizeMethod, true)
     },
+    shuffleRandom (arr) {
+      let len = arr.length
+      for (let i = 0; i < len - 1; i++) {
+        let idx = Math.floor(Math.random() * (len - i))
+        let temp = arr[idx]
+        arr[idx] = arr[len - i - 1]
+        arr[len - i - 1] = temp
+      }
+      return arr
+    },
+    shuffle () {
+      this.cells = this.shuffleRandom(this.cells)
+      this.$forceUpdate()
+      setTimeout(() => {
+        this.shuffle()
+      }, 5000)
+    },
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          alert('submit!')
         } else {
-          console.log('error submit!!');
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
+      })
     },
     resetForm (formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     }
   },
   created () {
   },
   mounted () {
     this.resizeBodyHeight()
+    this.shuffle()
   },
   watch: {}
 }
@@ -139,9 +164,61 @@ export default {
     width: 100%;
     height: 100%;
 
+    &--skew {
+      position: absolute;
+      top: 19%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      height: 61.8%;
+      margin: 0px;
+      padding: 0px;
+      background: #1F65D6;
+      transform: skewY(-4.5deg);
+    }
+
     &--body {
       display: table-cell;
       vertical-align: middle;
+    }
+  }
+
+  .login-form {
+    box-sizing: border-box;
+    width: 324px;
+    height: 324px;
+    padding: 84px 36px 16px 0;
+    background-color: $white;
+  }
+
+  .container {
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    width: 324px;
+    height: 324px;
+
+    .cell {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #aaa;
+      color: $white;
+      margin-right: -1px;
+      margin-bottom: -1px;
+    }
+    .cell:nth-child(3n) {
+      margin-right: 0;
+    }
+    .cell:nth-child(27n) {
+      margin-bottom: 0;
+    }
+    .cell-move {
+      transition: transform 2s;
     }
   }
 </style>
