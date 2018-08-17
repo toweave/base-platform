@@ -4,7 +4,10 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const getCookie = (cookieName) => {
+export function getCookie (cookieName) {
+  if (typeof cookieName !== 'string') {
+    throw new Error(`TypeError: Parameter type must be string. Parameter value : ${cookieName}`)
+  }
   if (document.cookie.length > 0) {
     let start = document.cookie.indexOf(cookieName + '=')
     if (start !== -1) {
@@ -15,15 +18,15 @@ const getCookie = (cookieName) => {
     }
   }
 }
-const setCookie = (cookieName, value, expiredays, path = '/', domain = location.hostname) => {
-  console.log(37, cookieName, value, expiredays, path, domain)
-  let expiredayDate = new Date()
-  expiredayDate.setDate(expiredayDate.getDate() + expiredays)
+export function setCookie (cookieName, value, expireDays, path = '/', domain = location.hostname) {
+  console.log(37, cookieName, value, expireDays, path, domain)
+  let expire = new Date()
+  expire.setDate(expire.getDate() + expireDays)
   document.cookie = cookieName + '=' + encodeURIComponent(JSON.stringify(value)) +
-    ((expiredays !== null && expiredays !== '' && expiredays !== undefined) ? '; expires=' + expiredayDate.toGMTString() : '') +
+    ((expireDays !== null && expireDays !== '' && expireDays !== undefined) ? '; expires=' + expire.toGMTString() : '') +
     '; path=' + path + '; domain=' + domain
 }
-const deleteCookie = (name) => {
+export function deleteCookie (name) {
   let exp = new Date()
   let cookieName = getCookie(name)
   exp.setTime(exp.getTime() - 1)
@@ -32,23 +35,35 @@ const deleteCookie = (name) => {
   }
   // alert('你清空了cookie信息。');
 }
-const setLocalStorage = (name, value) => {
+export function setLocalStorage (name, value) {
   localStorage.setItem(name, JSON.stringify(value))
 }
-const getLocalStorage = (name) => {
+export function getLocalStorage (name) {
   return JSON.parse(localStorage.getItem(name))
 }
-const deleteLocalStorage = (name) => {
+export function deleteLocalStorage (name) {
   localStorage.removeItem(name)
 }
-
-const widget = {
-  getCookie,
-  setCookie,
-  deleteCookie,
-  setLocalStorage,
-  getLocalStorage,
-  deleteLocalStorage
+export function hasScrollbar (selector) {
+  let querySelector = document.querySelector(selector)
+  return querySelector.firstChild.clientHeight > querySelector.clientHeight
+}
+export function getScrollbarWidth (selector) {
+  let querySelector = document.querySelector(selector)
+  return querySelector.offsetWidth - querySelector.clientWidth
 }
 
-export default widget
+function resolveAfter2Seconds () {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved')
+    }, 2000)
+  })
+}
+
+export async function asyncCall () {
+  console.log('calling')
+  let result = await resolveAfter2Seconds()
+  console.log(result)
+  // expected output: 'resolved'
+}

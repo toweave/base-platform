@@ -12,7 +12,7 @@ import store from './store'
 import * as directives from './directives'
 import * as filters from './filters'
 import plugin from './plugins'
-import widget from './utils/widget'
+import * as widget from './utils/widget'
 import {
   Pagination,
   Dialog,
@@ -86,7 +86,6 @@ import './styles/element-variables.scss'
 import './styles/other.scss'
 
 import AlertMine from './components/Alert.vue'
-console.log(89, widget)
 
 Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key])

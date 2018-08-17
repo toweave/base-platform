@@ -6,9 +6,9 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'
-import widget from '@/utils/widget'
+import {getCookie} from '@/utils/widget'
 
-let userName = widget.getCookie('userName')
+let userName = getCookie('userName')
 console.log(12, userName)
 
 Vue.use(Vuex)

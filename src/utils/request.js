@@ -12,17 +12,9 @@ switch (debugCase) {
     baseUrl.ip0 = 'http://192.168.1.109:8080'
     baseUrl.ip1 = 'http://172.17.29.16:8080'
     break
-  case 1: // 本地调试连接
+  case 1: // 测试环境链接
     baseUrl.ip0 = 'http://172.17.29.16:8080'
     baseUrl.ip1 = 'http://172.17.29.16:8080'
-    break
-  case 2: // 测试环境链接
-    baseUrl.ip0 = 'http://47.106.156.173:8080'
-    baseUrl.ip1 = 'http://47.106.156.173:9999'
-    break
-  case 3: // 测试环境链接 wifi
-    baseUrl.ip0 = 'http://172.17.250.111:8080'
-    baseUrl.ip1 = 'http://47.106.156.173:9999'
     break
   case 999: // 正式环境
     baseUrl.ip0 = 'http://jsonplaceholder.typicode.com'

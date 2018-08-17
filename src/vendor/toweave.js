@@ -33,12 +33,12 @@
       }
     }
   };
-  var setCookie = function (cookieName, value, expiredays, path = '/', domain = location.hostname) {
-    console.log(37, cookieName, value, expiredays, path, domain)
-    var expiredayDate = new Date();
-    expiredayDate.setDate(expiredayDate.getDate() + expiredays);
+  var setCookie = function (cookieName, value, expireDays, path = '/', domain = location.hostname) {
+    console.log(37, cookieName, value, expireDays, path, domain)
+    var expire = new Date();
+    expire.setDate(expire.getDate() + expireDays);
     document.cookie = cookieName + '=' + encodeURIComponent(JSON.stringify(value)) +
-      ((expiredays !== null && expiredays !== '' && expiredays !== undefined) ? '; expires=' + expiredayDate.toGMTString() : '')  +
+      ((expireDays !== null && expireDays !== '' && expireDays !== undefined) ? '; expires=' + expire.toGMTString() : '')  +
       '; path=' + path + '; domain=' + domain;
   };
   var deleteCookie = function (name) {
