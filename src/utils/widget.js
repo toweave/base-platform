@@ -27,11 +27,11 @@ export function setCookie (cookieName, value, expireDays, path = '/', domain = l
     '; path=' + path + '; domain=' + domain
 }
 export function deleteCookie (name) {
-  let exp = new Date()
+  let expire = new Date()
   let cookieName = getCookie(name)
-  exp.setTime(exp.getTime() - 1)
+  expire.setTime(expire.getTime() - 1)
   if (cookieName !== null && cookieName !== '' && cookieName !== undefined) {
-    document.cookie = name + '=' + cookieName + ';expires=' + exp.toGMTString()
+    document.cookie = name + '=' + cookieName + ';expires=' + expire.toGMTString()
   }
   // alert('你清空了cookie信息。');
 }
