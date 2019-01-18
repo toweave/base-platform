@@ -11,6 +11,11 @@ export default {
   }) {
     state.loading = loading
   },
+  [types.ACTIVE_LOADINGS] (state, {
+    loadings
+  }) {
+    state.loadings = loadings
+  },
   [types.ACTIVE_ALERT] (state, {
     alert
   }) {

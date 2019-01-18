@@ -48,13 +48,14 @@
       </el-row>
     </el-header>
     <el-container>
-      <el-aside class="container-side" id="asideMenuBox" style="width: 200px">
-        <div class="menu-box">
-          <el-menu :router="true"
-                   :collapse="isCollapseAsideMenu"
-                   :collapse-transition="false"
+      <el-aside class="container-side" style="width: auto">
+        <div class="menu-box" id="asideMenuBox" :style="{'height': bodyHeight + 40 + 'px'}">
+          <el-menu id="asideMenu"
                    default-active="2"
                    class="el-menu-vertical-demo"
+                   :router="true"
+                   :collapse="isCollapseAsideMenu"
+                   :collapse-transition="false"
                    @open="handleOpen"
                    @close="handleClose"
                    background-color="#545c64"
@@ -82,7 +83,7 @@
               <i class="el-icon-menu"></i>
               <span slot="title">数据导入</span>
             </el-menu-item>
-            <el-menu-item index="3" :route="{'path': '/self-service'}">
+            <el-menu-item index="3" :route="{'path': '/self-service'}" v-for="item in 10" :key="item">
               <i class="el-icon-setting"></i>
               <span slot="title">自助取数</span>
             </el-menu-item>
@@ -91,7 +92,7 @@
 
       </el-aside>
       <el-container>
-        <el-main class="container-body" :style="{'height': bodyHeight}" id="main">
+        <el-main class="container-body" :style="{'height': bodyHeight + 'px'}" id="main">
           <router-view/>
         </el-main>
         <el-footer class="container-footer" style="font-size: 14px;color: #999" height="40px">产品 version v1.0.0</el-footer>
@@ -112,7 +113,6 @@ export default {
       booleanMenuAnimation: false,
       isCollapseAsideMenu: false,
       bodyHeight: '',
-      viewHeight: '',
       activeIndex2: ''
     }
   },
@@ -121,7 +121,13 @@ export default {
       this.isCollapseAsideMenu = !this.isCollapseAsideMenu
       let asideMenuBox = document.querySelector('#asideMenuBox')
       if (this.isCollapseAsideMenu) {
-        VelocityAnimate(asideMenuBox, { width: '64px' }, { duration: 500 })
+        setTimeout(() => {
+          if (this.$widget.hasScrollbar('#asideMenuBox')) {
+            VelocityAnimate(asideMenuBox, { width: 64 + this.$widget.getScrollbarWidth('#asideMenuBox') + 'px' }, { duration: 500 })
+          } else {
+            VelocityAnimate(asideMenuBox, { width: '64px' }, { duration: 500 })
+          }
+        }, 20)
       } else {
         VelocityAnimate(asideMenuBox, { width: '200px' }, { duration: 500 })
       }
@@ -130,8 +136,7 @@ export default {
       let resizeMethod = () => {
         window.requestAnimationFrame(() => {
           let height = document.documentElement.clientHeight || document.body.clientHeight
-          this.bodyHeight = height - (60 + 40) + 'px'
-          this.viewHeight = height - (60 + 40 + 240) + 'px'
+          this.bodyHeight = height - (60 + 40)
         })
       }
       resizeMethod()
@@ -173,8 +178,7 @@ export default {
     width: 200px;
     border-top: 1px solid $white;
     background-color: #545c64;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 
     .el-menu {
       border-right: none;
@@ -233,5 +237,11 @@ export default {
         stroke-dasharray: 1px 220px;
       }
     }
+  }
+
+  .menu-box {
+    width: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 </style>

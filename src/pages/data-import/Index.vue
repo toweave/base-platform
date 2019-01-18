@@ -40,7 +40,6 @@ export default {
         title: '测试' + this.navigationData.length,
         url: 'http://www.baidu.com/'
       }
-      this.$setLocalStorage('LocalNavigation', this.navigationData)
     },
     watchData () {
       console.log(34)
@@ -99,11 +98,6 @@ export default {
     console.log(69, this)
     // this.testMethods()
     // let number = 0
-    let LocalNavigation = this.$getLocalStorage('LocalNavigation')
-    console.log(291, LocalNavigation)
-    if (LocalNavigation) {
-      this.navigationData = LocalNavigation
-    }
     setInterval(() => {
       this.testTime = new Date()
     }, 1000)

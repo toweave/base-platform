@@ -3,6 +3,7 @@
 import 'normalize.css'
 import 'es6-promise/auto'
 import './vendor/javascript'
+// import './vendor/toweave'
 import 'animate.css'
 import Vue from 'vue'
 import App from './App.vue'
@@ -11,6 +12,7 @@ import store from './store'
 import * as directives from './directives'
 import * as filters from './filters'
 import plugin from './plugins'
+import * as widget from './utils/widget'
 import {
   Pagination,
   Dialog,
@@ -160,6 +162,7 @@ Vue.use(Footer)
 
 Vue.use(Loading.directive)
 
+Vue.prototype.$widget = widget
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert

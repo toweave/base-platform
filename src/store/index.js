@@ -6,12 +6,17 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'
+import {getCookie} from '@/utils/widget'
+
+let userName = getCookie('userName')
+console.log(12, userName)
 
 Vue.use(Vuex)
 
 const state = {
-  userName: '--',
+  userName: userName,
   loading: false,
+  loadings: [false],
   alert: {
     show: false,
     title: '',
