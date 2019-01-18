@@ -27,7 +27,7 @@
 
     <div>
       <div class="scroll">
-        <div class="table-thead">
+        <div class="table-thead" ref="scrollTableHead">
           <table class="">
             <thead>
             <tr>
@@ -39,11 +39,11 @@
           </table>
         </div>
 
-        <div class="table-body">
+        <div class="table-body" ref="scrollTable">
           <table class="">
             <tbody>
             <tr v-for="item in 5" :key="item">
-              <td>1</td>
+              <td>A-{{item}}</td>
               <td>2</td>
               <td>3</td>
             </tr>
@@ -51,11 +51,11 @@
           </table>
         </div>
 
-        <div class="table-fixed">
+        <div class="table-fixed" ref="scrollTableFirst">
           <table class="">
             <tbody>
             <tr v-for="item in 5" :key="item">
-              <td>1</td>
+              <td>A-{{item}}</td>
             </tr>
             </tbody>
           </table>
@@ -111,6 +111,16 @@ export default {
   created () {
   },
   mounted () {
+    let scrollTable = this.$refs.scrollTable
+    let scrollTableFirst = this.$refs.scrollTableFirst
+    let scrollTableHead = this.$refs.scrollTableHead
+    console.log(scrollTable)
+    scrollTable.addEventListener('scroll', ($event) => {
+      console.log(117, $event)
+      console.log(scrollTable.scrollTop)
+      scrollTableFirst.scrollTop = scrollTable.scrollTop
+      scrollTableHead.scrollLeft = scrollTable.scrollLeft
+    }, false)
   }
 }
 </script>
