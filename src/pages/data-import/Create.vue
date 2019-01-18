@@ -9,7 +9,7 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <p style="padding:20px;height: 300px; background-color: #f1f1f1;" v-for="item in 20" :key="item">test P {{item}}</p>
+    <p style="padding:20px;height: 300px; background-color: #f1f1f1;" v-for="item in 1" :key="item">test P {{item}}</p>
     <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
     <el-button type="text" @click="$scrollToMainTop()">GO TO TOP</el-button>
 
@@ -24,6 +24,44 @@
     <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
   </span>
     </el-dialog>
+
+    <div>
+      <div class="scroll">
+        <div class="table-thead">
+          <table class="">
+            <thead>
+            <tr>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table-body">
+          <table class="">
+            <tbody>
+            <tr v-for="item in 5" :key="item">
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-fixed">
+          <table class="">
+            <tbody>
+            <tr v-for="item in 5" :key="item">
+              <td>1</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -110,5 +148,63 @@ export default {
   .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;
+  }
+
+  .scroll {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    table {
+      cellspacing: 0;
+      cellpadding: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 0;
+      // border: 1px solid #eee;
+    }
+    table tr th,
+    table tr td {
+      width: 200px;
+      height: 48px;
+      border: 1px solid #eee;
+    }
+  }
+
+  .table-thead {
+    overflow: hidden;
+    color: #00f;
+    table {
+      width: 600px;
+      // table-layout: fixed;
+    }
+  }
+  .table-fixed {
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 138px;
+    overflow: hidden;
+    color: #0f0;
+    table {
+      width: 200px;
+      // table-layout: fixed;
+    }
+  }
+
+  .table-body {
+    position: relative;
+    width: 300px;
+    height: 102px;
+    overflow-x: auto;
+    overflow-y: auto;
+    table {
+      width: 600px;
+      // table-layout: fixed;
+    }
   }
 </style>
