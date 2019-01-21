@@ -83,9 +83,13 @@
               <i class="el-icon-menu"></i>
               <span slot="title">数据导入</span>
             </el-menu-item>
-            <el-menu-item index="3" :route="{'path': '/self-service'}" v-for="item in 10" :key="item">
+            <el-menu-item index="3" :route="{'path': '/self-service'}">
               <i class="el-icon-setting"></i>
               <span slot="title">自助取数</span>
+            </el-menu-item>
+            <el-menu-item index="4" :route="{'path': '/i-frame'}">
+              <i class="el-icon-setting"></i>
+              <span slot="title">IFrame 测试</span>
             </el-menu-item>
           </el-menu>
         </div>

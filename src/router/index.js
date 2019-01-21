@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css'// progress bar style
 import ModuleErrors from './errors'
 import DataImport from './data-import'
 import SelfService from './self-service'
+import IFrame from './i-frame'
 
 const HeaderSide = () => import(/* webpackChunkName: "group-side" */ '@/layouts/HeaderSide')
 const Login = () => import(/* webpackChunkName: "group-side" */ '@/layouts/Login')
@@ -24,7 +25,8 @@ const router = new Router({
       alias: '',
       children: [
         DataImport,
-        SelfService
+        SelfService,
+        IFrame
       ]
     },
     {
