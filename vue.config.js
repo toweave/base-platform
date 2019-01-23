@@ -14,9 +14,8 @@ process.env.VUE_APP_VERSION = packageJSON.version
 // 需要将它改为'/my-app/'
 // iview-admin线上演示打包路径： https://file.iviewui.com/admin-dist/
 const BASE_URL = process.env.NODE_ENV === 'production'
-  ? '/abc'
+  ? './'
   : '/'
-console.log(18, process.env)
 
 module.exports = {
   // Project deployment base
@@ -35,6 +34,15 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
       .set('_c', resolve('src/components'))
+      .end()
+      // .set('snapsvg', resolve('snapsvg'))
+    // GraphQL Loader
+    config.module
+      .rule()
+      .test(require.resolve('snapsvg/dist/snap.svg.js'))
+      .use()
+      .loader('imports-loader?this=>window,fix=>module.exports=0')
+      .end()
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false

@@ -16,9 +16,11 @@ const Shape = () => import(/* webpackChunkName: "group-api-test" */ '@/views/Sha
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'hash',
+  // mode: 'hash',
+  // base: __dirname,
   // mode: 'history',
-  base: __dirname,
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',

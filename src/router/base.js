@@ -4,9 +4,9 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const BaseIndex = () => import(/* webpackChunkName: "import-base" */ '@/views/base/Index')
-const BasePool = () => import(/* webpackChunkName: "import-base" */ '@/views/base/Pool')
-const BaseDaily = () => import(/* webpackChunkName: "import-base" */ '@/views/base/Daily')
+const BaseIndex = () => import(/* webpackChunkName: "base" */ '@/views/base/Index')
+const BasePool = () => import(/* webpackChunkName: "base" */ '@/views/base/Pool')
+const BaseDaily = () => import(/* webpackChunkName: "base" */ '@/views/base/Daily')
 
 const Base = {
   path: 'base',

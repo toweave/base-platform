@@ -35,7 +35,7 @@ switch (debugCase) {
 }
 const baseAxios = axios.create({
   baseURL: baseURL.ip0,
-  timeout: 1000 * 60 * 60 * 2, // 60s 超时
+  timeout: 1000 * 60 * 60 * 2, // 60 * 60 * 2s 超时
   // params: {
   //   ID: 12345
   // },
