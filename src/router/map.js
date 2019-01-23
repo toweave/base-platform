@@ -4,7 +4,7 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const MapIndex = () => import(/* webpackChunkName: "import-base" */ '@/views/map/Index')
+const MapIndex = () => import(/* webpackChunkName: "map" */ '@/views/map/Index')
 
 const Map = {
   path: 'map',

@@ -4,7 +4,7 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const MessageIndex = () => import(/* webpackChunkName: "import-base" */ '@/views/message/Index')
+const MessageIndex = () => import(/* webpackChunkName: "message" */ '@/views/message/Index')
 
 const Message = {
   path: 'message',

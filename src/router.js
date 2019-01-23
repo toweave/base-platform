@@ -33,10 +33,10 @@ import Base from '@/router/base'
 import Map from '@/router/map'
 import Star from '@/router/star'
 import Message from '@/router/message'
-const ParentMain = () => import(/* webpackChunkName: "group-main" */ '@/layouts/Main')
-const Login = () => import(/* webpackChunkName: "group-main" */ '@/layouts/Login')
-const ApiTest = () => import(/* webpackChunkName: "group-api-test" */ '@/views/ApiTest')
-const Shape = () => import(/* webpackChunkName: "group-api-test" */ '@/views/Shape')
+const ParentMain = () => import(/* webpackChunkName: "layouts" */ '@/layouts/Main')
+const Login = () => import(/* webpackChunkName: "layouts" */ '@/layouts/Login')
+const ApiTest = () => import(/* webpackChunkName: "views" */ '@/views/ApiTest')
+const Shape = () => import(/* webpackChunkName: "views" */ '@/views/Shape')
 
 Vue.use(Router)
 

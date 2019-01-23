@@ -4,7 +4,7 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const StarIndex = () => import(/* webpackChunkName: "import-base" */ '@/views/star/Index')
+const StarIndex = () => import(/* webpackChunkName: "star" */ '@/views/star/Index')
 
 const Star = {
   path: 'star',
