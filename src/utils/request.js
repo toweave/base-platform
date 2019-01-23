@@ -11,18 +11,10 @@ switch (debugCase) {
   case 0: // 本地调试
     baseURL.ip0 = 'http://172.17.100.80:9072'
     baseURL.ip1 = 'http://172.17.29.16:8080'
-    store.commit({
-      type: 'BASE_URL',
-      baseURL: 'http://testdata.yiguo.com/'
-    })
     break
   case 1: // 测试环境
     baseURL.ip0 = 'http://172.17.8.230:9072' // 172.17.250.111
     baseURL.ip1 = 'http://172.17.250.111:9081'
-    store.commit({
-      type: 'BASE_URL',
-      baseURL: 'http://testdata.yiguo.com/'
-    })
     break
   case 2: // 预发布环境
     baseURL.ip0 = 'http://data.yiguo.com'
@@ -108,6 +100,9 @@ function checkStatusOldApi (response) {
     throw error
   }
 }
+console.log(103, store)
+store.commit({ type: 'app/APP', app: '12345679' })
+store.commit({ type: 'app/LOADING', loading: 'abc' })
 /**
  * Requests a URL, returning a promise.
  *
@@ -119,9 +114,9 @@ export async function request (url, options) {
   if (options.hasOwnProperty('ip') && options.ip) {
     options.baseURL = baseURL['ip' + options.ip]
   }
-  store.commit({ type: 'ACTIVE_LOADING', loading: true })
+  store.commit({ type: 'app/LOADING', loading: true })
   const response = await baseAxios(url, options)
-  store.commit({ type: 'ACTIVE_LOADING', loading: false })
+  store.commit({ type: 'app/LOADING', loading: false })
   return checkStatus(response)
 }
 
@@ -129,9 +124,9 @@ export async function requestOldApi (url, options) {
   if (options.hasOwnProperty('ip') && options.ip) {
     options.baseURL = baseURL['ip' + options.ip]
   }
-  store.commit({ type: 'ACTIVE_LOADING', loading: true })
+  store.commit({ type: 'LOADING', loading: true })
   const response = await baseAxios(url, options)
-  store.commit({ type: 'ACTIVE_LOADING', loading: false })
+  store.commit({ type: 'LOADING', loading: false })
   return checkStatusOldApi(response)
 }
 
@@ -156,25 +151,25 @@ export async function requestConcurrence (url, options, indexLoading) {
     options.baseURL = baseURL['ip' + options.ip]
   }
   let loadings = store.state.loadings
-  store.commit({ type: 'ACTIVE_LOADING', loading: true })
+  store.commit({ type: 'LOADING', loading: true })
   if (!indexLoading && indexLoading !== 0) {
-    store.commit({ type: 'ACTIVE_LOADINGS', loadings: [true] })
+    store.commit({ type: 'LOADINGS', loadings: [true] })
   } else {
     loadings[indexLoading] = true
-    store.commit({ type: 'ACTIVE_LOADINGS', loadings: loadings })
+    store.commit({ type: 'LOADINGS', loadings: loadings })
   }
   const response = await baseAxios(url, options)
   if (!indexLoading && indexLoading !== 0) {
-    store.commit({ type: 'ACTIVE_LOADINGS', loadings: [false] })
+    store.commit({ type: 'LOADINGS', loadings: [false] })
   } else {
     loadings[indexLoading] = false
-    store.commit({ type: 'ACTIVE_LOADINGS', loadings: loadings })
+    store.commit({ type: 'LOADINGS', loadings: loadings })
   }
   let loadingsBoolean = loadings.every((item) => {
     return item === false
   })
   if (loadingsBoolean) {
-    store.commit({ type: 'ACTIVE_LOADING', loading: false })
+    store.commit({ type: 'LOADING', loading: false })
   }
   const data = checkStatus(response)
   return data.data

@@ -3,21 +3,21 @@ import * as types from './mutation-types'
 import { getLocalStorage } from '@/utils/widget'
 
 export default {
-  async getUserName ({
+  async getAppName ({
     commit,
     state
   }, data) {
-    commit(types.USER_NAME, {
-      userName: data.userName
+    commit(types.APP, {
+      app: data.app
     })
   },
   async getUserConfig ({
     commit,
     state
   }) {
-    let userInfo = getLocalStorage('userInfo')
-    commit(types.SET_CONFIG, {
-      config: userInfo
+    let app = getLocalStorage('app')
+    commit(types.APP, {
+      config: app
     })
     // if (state.userName) {
     //   let params = {

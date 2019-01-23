@@ -5,6 +5,8 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
+    // 忽略结尾分号
+    'semi': [0, 'always'],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
