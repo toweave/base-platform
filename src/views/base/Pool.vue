@@ -19,10 +19,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'BasePool',
   mixins: [],
   components: {},
+  computed: mapState({
+    app: state => state.app.app,
+    name: state => state.user.name
+  }),
   data () {
     return {
       msg: 'Welcome to BasePool',
@@ -80,8 +85,10 @@ export default {
     }
   },
   created () {
+    console.log(29, this.app, this.name)
   },
   mounted () {
+    console.log(32, this.app, this.name)
     this.hasHandlerBar()
   }
 }

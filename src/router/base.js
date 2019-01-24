@@ -13,13 +13,14 @@ const Base = {
   name: 'BaseIndex',
   meta: { title: '仓端' },
   component: BaseIndex,
-  // alias: '',
+  alias: '',
   children: [
     {
       path: 'pool',
       name: 'BasePool',
       meta: { title: '基地订单池监控' },
-      component: BasePool
+      component: BasePool,
+      alias: ''
     }, {
       path: 'daily',
       name: 'BaseDaily',

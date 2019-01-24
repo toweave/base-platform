@@ -10,8 +10,7 @@ const Map = {
   path: 'map',
   name: 'MapIndex',
   meta: { title: '数据地图' },
-  component: MapIndex,
-  alias: ''
+  component: MapIndex
 }
 
 export default Map

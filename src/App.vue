@@ -7,7 +7,37 @@
     <router-view/>
   </div>
 </template>
+<script>
+import { mapState } from 'vuex'
 
+export default {
+  name: 'App',
+  components: {},
+  computed: mapState({
+    app: state => state.app.app,
+    name: state => state.user.name
+  }),
+  data () {
+    return {
+      msg: 'App'
+    }
+  },
+  methods: {},
+  beforeCreate () {
+  },
+  created () {
+    console.log(29, this.app, this.name)
+  },
+  mounted () {
+    console.log(32, this.app, this.name)
+  },
+  watch: {
+    name: function (newValue, oldValue) {
+      console.log(36, this.app, this.name)
+    }
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

@@ -100,9 +100,6 @@ function checkStatusOldApi (response) {
     throw error
   }
 }
-console.log(103, store)
-store.commit({ type: 'app/APP', app: '12345679' })
-store.commit({ type: 'app/LOADING', loading: 'abc' })
 /**
  * Requests a URL, returning a promise.
  *
