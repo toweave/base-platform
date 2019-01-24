@@ -5,6 +5,7 @@ const resolve = dir => {
   return path.join(__dirname, dir)
 }
 process.env.VUE_APP_VERSION = packageJSON.version
+process.env.VUE_APP_NAME = packageJSON.name
 // 项目部署基础
 // 默认情况下，我们假设你的应用将被部署在域的根目录下,
 // 例如：https://www.my-app.com/

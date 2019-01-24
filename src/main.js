@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-console.log(6, process.env)
+console.table(process.env)
 console.log(103, store)
 store.commit({ type: 'app/APP', app: '12345679' })
 store.commit({ type: 'app/LOADING', loading: 'abc' })
