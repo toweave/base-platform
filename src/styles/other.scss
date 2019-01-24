@@ -1,0 +1,110 @@
+@import './index.scss';
+/*------common start------*/
+@font-face {
+  font-family: "Digital-Regular";
+  src: url("/static/font/Digital-Regular.eot?") format("eot"),
+  url("/static/font/Digital-Regular.woff") format("woff"),
+  url("/static/font/Digital-Regular.ttf") format("truetype"),
+  url("/static/font/Digital-Regular.svg#Digital-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.link-color {
+  color: $main;
+}
+
+.link-color:hover,
+.link-color:focus {
+  color: $mainDeep;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mouse-pointer {
+  cursor: pointer;
+}
+/*------common end------*/
+/*------animate start------*/
+#mapStars {
+  z-index: 5;
+  position: absolute;
+  top: 6px;
+  left: 508px;
+  width: 876px;
+  height: 741px;
+}
+
+#mapStars span {
+  display: inline-block;
+  width: auto;
+  position: absolute;
+  border-radius: 100%;
+  /*animation-name: myFirst;*/
+  /*animation-duration: 5s;*/
+  /*animation-timing-function: linear;*/
+  /*animation-delay: 2s;*/
+  /*animation-iteration-count: infinite;*/
+  /*animation-direction: alternate;*/
+  /*animation-play-state: running;*/
+  -webkit-transition: all 60s linear;
+  transition: all 60s linear;
+}
+
+@keyframes myFirst {
+  0% {
+    background: red;
+    opacity: 0;
+  }
+  25% {
+    background: yellow;
+    opacity: .25;
+  }
+  50% {
+    background: blue;
+    opacity: .5;
+  }
+  100% {
+    background: green;
+    opacity: 1;
+  }
+}
+
+@keyframes myOpacity
+{
+  0% {opacity: .2;}
+  25% {opacity: .75;}
+  50% {opacity: 1;}
+  75% {opacity: .75;}
+  100% {opacity: .2;}
+}
+
+@-moz-keyframes myOpacity /* Firefox */
+{
+  0% {opacity: .2;}
+  25% {opacity: .75;}
+  50% {opacity: 1;}
+  75% {opacity: .75;}
+  100% {opacity: .2;}
+}
+
+@-webkit-keyframes myOpacity /* Safari and Chrome */
+{
+  0% {opacity: .2;}
+  25% {opacity: .75;}
+  50% {opacity: 1;}
+  75% {opacity: .75;}
+  100% {opacity: .2;}
+}
+/*------animate end------*/
+
