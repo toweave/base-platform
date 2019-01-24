@@ -1,6 +1,9 @@
 {
   "name": "base-platform-v1",
   "version": "0.1.0",
+  "author": "Toweave",
+  "email": "toweave@163.com",
+  "blog": "http://www.toweave.com/",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode local",

@@ -25,7 +25,7 @@ import Snap from 'snapsvg'
 import { mapState } from 'vuex'
 import { apiStar } from './server/api'
 console.log(27, TWEEN, Snap, apiStar)
-
+apiStar()
 export default {
   name: 'MapIndex',
   mixins: [],

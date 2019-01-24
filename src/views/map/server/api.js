@@ -33,7 +33,8 @@ export function apiSearchNotLoading (params) {
 export function apiStar (params) {
   return request(`/map/index/focusAction`, {
     method: 'POST',
-    data: params
+    data: params,
+    ip: 'XXX'
   })
 }
 
