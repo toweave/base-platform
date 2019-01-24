@@ -24,7 +24,8 @@ export default {
   },
   mounted () {
   },
-  watch: {}
+  watch: {
+  }
 }
 </script>
 

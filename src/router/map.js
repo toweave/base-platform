@@ -11,6 +11,6 @@ const Map = {
   name: 'MapIndex',
   meta: { title: '数据地图' },
   component: MapIndex
-}
+} 
 
 export default Map

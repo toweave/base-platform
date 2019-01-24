@@ -26,7 +26,8 @@ export default {
       loading: 'loading'
     })
   },
-  methods: {},
+  methods: {
+  },
   mounted () {
   },
   watch: {},
