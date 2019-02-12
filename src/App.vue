@@ -30,6 +30,7 @@ export default {
   },
   mounted () {
     console.log(32, this.app, this.name)
+    console.log(999, this.STYLES)
   },
   watch: {
     name: function (newValue, oldValue) {

@@ -8,6 +8,7 @@ console.log(103, store)
 store.commit({ type: 'app/APP', app: '12345679' })
 store.commit({ type: 'app/LOADING', loading: 'abc' })
 store.commit({ type: 'user/NAME', name: 'JJJ' })
+Vue.prototype.STYLES = JSON.parse(process.env.VUE_APP_STYLES)
 
 Vue.config.productionTip = false
 

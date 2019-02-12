@@ -18,7 +18,20 @@ process.env.VUE_APP_NAME = packageJSON.name
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? './'
   : '/'
-
+let test = fs.readFileSync('src/styles/color.scss', 'utf-8')
+let testA = test.replace(/[ ]/g, '').replace(/[\r\n]/g, '')
+console.log(22, testA)
+let a = testA.split(';')
+console.log(24, a)
+let o = {}
+a.forEach((item) => {
+  if (item) {
+    let temp = item.split(':')
+    o[temp[0]] = temp[1]
+  }
+})
+console.log(33, process.env.VUE_APP_STYLES, o)
+process.env.VUE_APP_STYLES = JSON.stringify(o)
 module.exports = {
   // Project deployment base
   // By default we assume your app will be deployed at the root of a domain,
@@ -52,12 +65,6 @@ module.exports = {
       .use()
       .loader('imports-loader?this=>window,fix=>module.exports=0')
       .end()
-    // config.module
-    //   .rule()
-    //   .test(require.resolve('./src/styles/index.scss'))
-    //   .use()
-    //   .loader('sass-resources-loader')
-    //   .end()
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false
