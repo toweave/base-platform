@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const packageJSON = require('./package.json')
 
 const resolve = dir => {
@@ -31,6 +32,13 @@ module.exports = {
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   lintOnSave: true,
+  css: {
+    loaderOptions: {
+      sass: {
+        data: fs.readFileSync('src/styles/color.scss', 'utf-8')
+      }
+    }
+  },
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
@@ -44,6 +52,12 @@ module.exports = {
       .use()
       .loader('imports-loader?this=>window,fix=>module.exports=0')
       .end()
+    // config.module
+    //   .rule()
+    //   .test(require.resolve('./src/styles/index.scss'))
+    //   .use()
+    //   .loader('sass-resources-loader')
+    //   .end()
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false
