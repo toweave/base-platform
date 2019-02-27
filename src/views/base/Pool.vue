@@ -107,6 +107,7 @@ export default {
     position: relative;
     width: 1280px;
     height: 360px;
+    margin: auto;
     border: 1px solid #ccc;
     overflow: hidden;
     padding-right: 10px;
