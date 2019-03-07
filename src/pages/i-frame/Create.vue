@@ -22,7 +22,7 @@ export default {
   mounted () {
     let docFrag = new DocumentFragment()
     let iframe = document.createElement('iframe')
-    iframe.src = 'http://172.17.100.72:7010/i-frame?authCode=dk3hn3rt&authUser=qiuguangming'
+    iframe.src = 'http://172.17.100.73:7010/i-frame/half?authAppName=XX&authUser=lizi&authId=3022&authAppWidth=500'
     iframe.width = '100%'
     iframe.height = 600 + 'px'
     iframe.style.border = '1px solid #f1f1f1'

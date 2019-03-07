@@ -11,7 +11,6 @@ const IFrame = {
   path: 'i-frame',
   name: 'IFrameIndex',
   component: IFrameIndex,
-  alias: '',
   children: [
     {
       path: 'create',
