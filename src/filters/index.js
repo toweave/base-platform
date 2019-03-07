@@ -9,8 +9,8 @@ const capitalize = (value) => {
 }
 
 const number = (value, decimals, separators, points) => {
-  if (!value) {
-    return ''
+  if (!value && value !== 0 && value !== '0') {
+    return '--'
   } else {
     /**
      * @author Toweave (lizi)
@@ -87,4 +87,4 @@ const date = (value, reg) => {
   }
 }
 
-export {capitalize, number, date}
+export { capitalize, number, date }

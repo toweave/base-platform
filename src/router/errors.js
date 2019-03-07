@@ -4,17 +4,18 @@
  * @Date: 2018/8/15 15:45
  * @Description: create error route module
  * ======================================== */
-const ParentHeaderSide = () => import(/* webpackChunkName: "group-error" */ '@/layouts/HeaderSide')
-const NotFound = () => import(/* webpackChunkName: "group-error" */ '@/pages/404')
+const ErrorMain = () => import(/* webpackChunkName: "error" */ '@/layouts/Main')
+const NotFound = () => import(/* webpackChunkName: "error" */ '@/views/404')
 
 const errorLayout = {
   path: '/error',
-  name: 'ParentHeaderSide',
-  component: ParentHeaderSide,
+  name: 'ErrorMain',
+  component: ErrorMain,
   children: [
     {
       path: '404',
       name: 'NotFound',
+      meta: { title: '404' },
       component: NotFound,
       alias: ''
     }

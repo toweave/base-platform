@@ -3,7 +3,7 @@
     <div class="modal-tip__cell">
       <div class="modal-box animated flipInX">
         <div class="modal-box__cancel" @click="activeButtonRight(alert.functionRight)">
-          <i class="modal-box__i el-icon-close"></i>
+          <i class="modal-box__i"></i>
         </div>
         <div class="modal-box__header">
           <div class="modal-box__title">{{alert.title}}</div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Alert',
   components: {},
@@ -112,9 +112,11 @@ export default {
     }
 
     &__i {
-      font-size: $sizeXXS;
-      line-height: 30px;
-      font-weight: $weightThin;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: url("./../assets/icon/close.png") no-repeat center center;
+      background-size: 40%;
     }
 
     &__header {
@@ -172,13 +174,13 @@ export default {
       height: 30px;
       font-size: 12px;
       line-height: 28px;
-      border: 1px solid $main;
+      border: 1px solid $btn;
       border-radius: 4px;
       cursor: pointer;
 
       &-single {
         color: $white;
-        background-color: $main;
+        background-color: $btn;
       }
     }
 
@@ -189,7 +191,7 @@ export default {
 
     &__button:hover {
       color: $white;
-      background-color: $main;
+      background-color: $btnDeep;
     }
   }
 </style>

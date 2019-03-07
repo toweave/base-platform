@@ -14,15 +14,14 @@ export function getCookie (cookieName) {
       start = start + cookieName.length + 1
       let end = document.cookie.indexOf(';', start)
       if (end === -1) end = document.cookie.length
-      return JSON.parse(decodeURIComponent(document.cookie.substring(start, end)))
+      return decodeURIComponent(document.cookie.substring(start, end))
     }
   }
 }
 export function setCookie (cookieName, value, expireDays, path = '/', domain = location.hostname) {
-  console.log(37, cookieName, value, expireDays, path, domain)
   let expire = new Date()
   expire.setDate(expire.getDate() + expireDays)
-  document.cookie = cookieName + '=' + encodeURIComponent(JSON.stringify(value)) +
+  document.cookie = cookieName + '=' + encodeURIComponent(value) +
     ((expireDays !== null && expireDays !== '' && expireDays !== undefined) ? '; expires=' + expire.toGMTString() : '') +
     '; path=' + path + '; domain=' + domain
 }
@@ -36,10 +35,10 @@ export function deleteCookie (name) {
   // alert('你清空了cookie信息。');
 }
 export function setLocalStorage (name, value) {
-  localStorage.setItem(name, JSON.stringify(value))
+  localStorage.setItem(name, value)
 }
 export function getLocalStorage (name) {
-  return JSON.parse(localStorage.getItem(name))
+  return localStorage.getItem(name)
 }
 export function deleteLocalStorage (name) {
   localStorage.removeItem(name)
@@ -62,7 +61,6 @@ function resolveAfter2Seconds () {
 }
 
 export async function asyncCall () {
-  console.log('calling')
   let result = await resolveAfter2Seconds()
   console.log(result)
   // expected output: 'resolved'

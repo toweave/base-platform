@@ -5,19 +5,22 @@
  * @todo: methods
  */
 const mixin = {
+  data () {
+    return {
+      bodyHeight: ''
+    }
+  },
   methods: {
+    resizeBodyHeight () {
+    },
     foo: () => {
-      console.log('foo')
     },
     conflicting: () => {
-      console.log('from mixin')
     }
   },
   created: function () {
-    console.log('混入对象的钩子被调用')
-    this.$nextTick(() => {
-      document.getElementById('main').addEventListener('scroll', this.onScroll)
-    })
+  },
+  mounted () {
   }
 }
 

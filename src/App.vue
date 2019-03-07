@@ -1,50 +1,59 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
-    <!--<transition name="animated-transition"-->
-    <!--enter-active-class="animated fadeIn"-->
-    <!--leave-active-class="animated fadeOut">-->
-    <router-view></router-view>
-    <!--</transition>-->
-    <alert></alert>
-    <loading></loading>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
 <script>
-import Alert from './components/Alert.vue'
-import Loading from './components/Loading.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
-  components: {Alert, Loading},
+  components: {},
+  computed: mapState({
+    app: state => state.app.app,
+    name: state => state.user.name
+  }),
   data () {
     return {
       msg: 'App'
     }
   },
-  computed: {},
   methods: {},
+  beforeCreate () {
+  },
   created () {
+    console.log(29, this.app, this.name)
   },
   mounted () {
+    console.log(32, this.app, this.name)
   },
-  watch: {}
+  watch: {
+    name: function (newValue, oldValue) {
+      console.log(36, this.app, this.name)
+    }
+  }
 }
 </script>
-
-<style type="text/scss" rel="stylesheet/scss" lang="scss">
-  @import './styles/index.scss';
-
-  html {
-    overflow-y: hidden;
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
   }
-
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: $font;
-  }
+}
 </style>

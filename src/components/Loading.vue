@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Loading',
   props: [],
@@ -26,7 +26,8 @@ export default {
       loading: 'loading'
     })
   },
-  methods: {},
+  methods: {
+  },
   mounted () {
   },
   watch: {},
@@ -94,9 +95,9 @@ export default {
     width: 0;
     height: 0;
     border-right: 25px solid transparent;
-    border-top: 25px solid $main;
-    border-left: 25px solid $main;
-    border-bottom: 25px solid $main;
+    border-top: 25px solid $btn;
+    border-left: 25px solid $btn;
+    border-bottom: 25px solid $btn;
     border-radius: 25px;
     -webkit-animation: rotate_pacman_half_up 0.5s 0s infinite;
     animation: rotate_pacman_half_up 0.5s 0s infinite;
@@ -108,9 +109,9 @@ export default {
     height: 0;
     margin-top: -50px;
     border-right: 25px solid transparent;
-    border-top: 25px solid $main;
-    border-left: 25px solid $main;
-    border-bottom: 25px solid $main;
+    border-top: 25px solid $btn;
+    border-left: 25px solid $btn;
+    border-bottom: 25px solid $btn;
     border-radius: 25px;
     -webkit-animation: rotate_pacman_half_down 0.5s 0s infinite;
     animation: rotate_pacman_half_down 0.5s 0s infinite;
@@ -125,7 +126,7 @@ export default {
     height: 10px;
     margin: 2px;
     border-radius: 100%;
-    background-color: $main;
+    background-color: $btn;
     -webkit-transform: translate(0, -6.25px);
     -ms-transform: translate(0, -6.25px);
     transform: translate(0, -6.25px);
